@@ -1,4 +1,4 @@
-name: Wheel Tester
+name: Wheel Tester on GH runners
 on:
   push:
     branches:
@@ -6,10 +6,11 @@ on:
   schedule:
     # Run nightly
     - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   ubuntu_wheel_test:
-    runs-on: [self-hosted, linux, ARM64, m6g]
+    runs-on: ubuntu-22.04-arm
     name: "Test Python Wheels"
     steps:
       - name: Checkout repository
